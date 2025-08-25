@@ -25,4 +25,36 @@ def ingest_pdf_from_arxiv(arxiv_id):
     pdf_url = f"{base_url}{arxiv_id}.pdf"
 
     print(f"Donwloading PDF from: {pdf_url}")
+
+    try:
+        # Download the PDF content
+        response = requests.get(pdf_url, stream=True)
+        response.raise_for_status() # this will raise an HTTPError if the response was an error
+
+        # Use pdfplumber to open and process the PDF from the downloaded content
+        with pdfplumber.open(response.content) as pdf:
+            full_text = ""
+            for page in pdf.pages:
+                text_on_page = page.extract_text()
+                if text_on_page:
+                    full_text += text_on_page + "\n"
+        print("PDF successfully ingested and text extracted.")
+        return full_text
     
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading the PDF: {e}")
+        return None
+    except Exception as e:
+        print(f"An error occurred during the PDF processing: {e}")
+        return None
+    
+    if __name__ == "__main__":
+        example_id = "1706.03762" # the id for the "attention is all you need" paper
+        paper_text = ingest_pdf_from_arxiv(example_id)
+
+        if paper_text:
+            # print the first 1000 characters to verify the text extraction
+            print("\n--- Extracted Text Preview ---")
+            print(paper_text[:1000])
+            print("\n--- End of preview ---")
+            
