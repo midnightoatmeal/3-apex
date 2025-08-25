@@ -1,14 +1,9 @@
 import sys
 import os
-from openai import OpenAI
-from dotenv import load_dotenv # <-- New import
 
 from pdf_ingestion import ingest_pdf_from_arxiv
 from agentic_core import get_initial_claims
 
-# Load environment variables from the .env file
-load_dotenv()
-client = OpenAI()
 
 def main(arxiv_id):
     """

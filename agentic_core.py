@@ -1,6 +1,12 @@
 
 import os
 from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Initialize the client only once in the file
 client = OpenAI()
 
 def get_initial_claims(paper_text):
