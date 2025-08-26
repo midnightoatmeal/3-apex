@@ -2,7 +2,7 @@ import sys
 import os
 
 from pdf_ingestion import ingest_pdf_from_arxiv
-from agentic_core import get_initial_claims, run_debate
+from agentic_core import get_initial_claims, run_debate, generate_tldr
 
 
 def main(arxiv_id):
@@ -40,8 +40,16 @@ def main(arxiv_id):
         print("\n" + "#"*10 + f" ROUND {round_data['round']} " + "#"*10)
         for persona. claim in round_data.items():
             if persona != "round":
-                print(f"\n### {persona/upper()}")
+                print(f"\n### {persona.upper()}")
                 print(claim)
+    
+    # Step 6. Generate and print the TL;DR summary
+    print("\n" + "="*50)
+    print("TL;DR - DEBATE SUMMARY")
+    print("="*50 + "\n")
+
+    tldr_summary = generate_tldr(debate_history)
+    print(tldr_summary)
 
 if __name__ == "__main__":
     # The script now takes the arXiv ID from the command line
