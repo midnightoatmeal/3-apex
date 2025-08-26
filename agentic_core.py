@@ -165,7 +165,7 @@ def generate_tldr(debate_history):
             model="gpt-4o-mini",
             messages=[{"role": "user", "content": tldr_prompt}]
         )
-        return response.choices.[0].message.content
+        return response.choices[0].message.content
     
     except Exception as e:
         return f"Error generating TL;DR: {e}"
