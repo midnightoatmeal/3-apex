@@ -2,7 +2,7 @@ import sys
 import os
 
 from pdf_ingestion import ingest_pdf_from_arxiv
-from agentic_core import get_initial_claims
+from agentic_core import get_initial_claims, run_debate
 
 
 def main(arxiv_id):
@@ -27,6 +27,21 @@ def main(arxiv_id):
         print(f"### {persona.upper()}")
         print(claim)
         print("\n" + "-"*50 + "\n")
+
+    # Step 4. Run the multi-round debate
+    print("\n" + "="*50)
+    print(f"Starting the Debate")
+    print("="*50 + "\n")
+
+    debate_history = run_debate(initial_claims, paper_text)
+
+    # Step 5. Print the final debate history
+    for round_data in debate_history:
+        print("\n" + "#"*10 + f" ROUND {round_data['round']} " + "#"*10)
+        for persona. claim in round_data.items():
+            if persona != "round":
+                print(f"\n### {persona/upper()}")
+                print(claim)
 
 if __name__ == "__main__":
     # The script now takes the arXiv ID from the command line
