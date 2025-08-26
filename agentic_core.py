@@ -22,21 +22,12 @@ def run_full_debate(paper_text):
         dict: A structured dictionary containing the full debate transcript
               and the final TL;DR summary, ready for the web template.
     """
-    # 1. Get the initial claims from all personas
     initial_claims = get_initial_claims(paper_text)
-
-    # 2. Run the multi-round debate using the claims and paper text
     debate_history = run_debate(initial_claims, paper_text)
-
-    # 3. Generate the final TL;DR summary from the debate history
     tldr_summary = generate_tldr(debate_history)
-
-    # 4. Combine and format the results for the web template
-    # The run_debate function returns a list, but the results.html template
-    # expects a dictionary with round numbers as keys. Let's format it.
+    
     formatted_rounds = {}
     for round_data in debate_history:
-        # Get the round number and remove it from the dictionary
         round_num = str(round_data.pop("round"))
         formatted_rounds[round_num] = round_data
     
@@ -89,20 +80,15 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
     Simulates a multi-round debate between the personas.
     """
     debate_history = []
-
-    # Start the debate with the initial claims
     debate_history.append({"round": 0, "Optimist": initial_claims["Optimist"], "Skeptic": initial_claims["Skeptic"], "Ethicist": initial_claims["Ethicist"]})
-
     text_chunk = paper_text[:8000]
 
     for i in range(1, max_rounds + 1):
         previous_optimist_claim = debate_history[-1].get("Optimist", "")
         previous_skeptic_claim = debate_history[-1].get("Skeptic", "")
         previous_ethicist_claim = debate_history[-1].get("Ethicist", "")
-
         current_round = {}
 
-        # 1. Skeptic responds to the Optimist's previous claim
         skeptic_prompt = (
             f"You are the Skeptic. The Optimist has made the following claim: '{previous_optimist_claim}'. "
             f"Provide a counter-argument or a point of nuance, citing the paper to suggest your position. "
@@ -114,7 +100,6 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
         ).choices[0].message.content
         current_round["Skeptic"] = skeptic_response
 
-        # 2. Optimist responds to the Skeptic's new claim
         optimist_prompt = (
             f"You are the Optimist. The Skeptic has just made the following counter-claim: '{current_round['Skeptic']}'. "
             f"Provide a rebuttal or a different perspective that supports the paper's findings. "
@@ -126,7 +111,6 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
         ).choices[0].message.content
         current_round["Optimist"] = optimist_response
 
-        # 3. Ethicist responds to the debate between the other two
         ethicist_prompt = (
             f"You are the Ethicist. The Optimist and Skeptic are debating. The Optimist's last point was: '{current_round['Optimist']}'. "
             f"The Skeptic's last pint was: '{current_round['Skeptic']}'. "
