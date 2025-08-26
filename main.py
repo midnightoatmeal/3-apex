@@ -38,7 +38,7 @@ def main(arxiv_id):
     # Step 5. Print the final debate history
     for round_data in debate_history:
         print("\n" + "#"*10 + f" ROUND {round_data['round']} " + "#"*10)
-        for persona. claim in round_data.items():
+        for persona, claim in round_data.items():
             if persona != "round":
                 print(f"\n### {persona.upper()}")
                 print(claim)
