@@ -134,5 +134,40 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
 
     return debate_history
 
+def generate_tldr(debate_history):
+    """
+    Generates a concise TL:DR summary of the entire debate.
+    Args:
+        debate_history (list): A list of dictionaries representing the debate rounds.
+    Returns:
+        str: A concise summary of the debate.
+    """
 
-                                  
+    print("\n--- Generating TL:DR Summary ---")
+
+    # Format the debate history into a single string for the LLM
+    formatted_debate = ""
+    for round_data in debate_history:
+        formatted_debate += f"\nRound {round_data['round']}:\n"
+        for persona, claim in round_data.items():
+            if persona != "round":
+                formatted_debate += f" {persona.upper()}: {claim}\n"
+    
+    tldr_prompt = (
+        f"Based on the following debate transcript, provide a concise, neutral "
+        f"TL;DR summary of the key points and outcomes. Do not add any new information. "
+        f"Focus on the core arguments from the Optimist, Skeptic, and Ethicist.\n\n"
+        f"Debate Transcript:\n{formatted_debate}"
+    )
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": tldr_prompt}]
+        )
+        return response.choices.[0].message.content
+    
+    except Exception as e:
+        return f"Error generating TL;DR: {e}"
+
+
