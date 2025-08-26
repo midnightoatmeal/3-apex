@@ -28,14 +28,14 @@ def main(arxiv_id):
         print(claim)
         print("\n" + "-"*50 + "\n")
 
-    # Step 4. Run the multi-round debate
+    # Step 4: Run the multi-round debate
     print("\n" + "="*50)
     print(f"Starting the Debate")
     print("="*50 + "\n")
 
     debate_history = run_debate(initial_claims, paper_text)
 
-    # Step 5. Print the final debate history
+    # Step 5: Print the final debate history
     for round_data in debate_history:
         print("\n" + "#"*10 + f" ROUND {round_data['round']} " + "#"*10)
         for persona, claim in round_data.items():
@@ -43,7 +43,7 @@ def main(arxiv_id):
                 print(f"\n### {persona.upper()}")
                 print(claim)
     
-    # Step 6. Generate and print the TL;DR summary
+    # Step 6: Generate and print the TL;DR summary
     print("\n" + "="*50)
     print("TL;DR - DEBATE SUMMARY")
     print("="*50 + "\n")
