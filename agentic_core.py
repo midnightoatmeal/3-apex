@@ -95,7 +95,7 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
 
         # 1. Skeptic responds to the Optimist's previous claim
         skeptic_prompt = (
-            f"You are the Skeptic. The Optimist has made the following claim: '{previous_optimist_claim}'."
+            f"You are the Skeptic. The Optimist has made the following claim: '{previous_optimist_claim}'. "
             f"Provide a counter-argument or a point of nuance, ciitng the paper to suggest your position. "
             f"Here is the paper text for reference:\n\n{text_chunk}"
         )
@@ -104,4 +104,18 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
             messages=[{"role": "user", "content": skeptic_prompt}]
         ).choices[0].message.content
         current_round["Skeptic"] = skeptic_response
+
+        # 2. Optimist responds to the Skeptic's new claim
+        optimist_prompt = (
+            f"You are the Optimist. The Skeptic has just made the following counter-claim: '{current_round['Skeptic']}'. "
+            f"Provide a rebuttal or a different perspective that supports the paper's findings. "
+            f"Here is the paper text for reference:\n\n{text_chunk}"
+        )
+        optimist_response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": optimist_prompt}]
+        ).choices[0].message.content
+        current_round["Optimist"] = optimist_response
+
+        
                                   
