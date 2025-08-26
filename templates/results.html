@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debate Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .persona {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .optimist { background-color: #e6f7ff; }
+        .skeptic { background-color: #fff0f0; }
+        .ethicist { background-color: #f9f9e6; }
+        h2 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+        .claim {
+            font-style: italic;
+            margin-top: 10px;
+        }
+        .citation {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ArXiv Debate Results</h1>
+        <h2>TL;DR Summary</h2>
+        <p>{{ debate.tldr }}</p>
+
+        <h2>The Debate</h2>
+        <!-- Loop through the debate rounds -->
+        {% for round_num, claims in debate.rounds.items() %}
+        <div class="round">
+            <h3>Round {{ round_num }}</h3>
+            <!-- Loop through the claims in each round -->
+            {% for persona, claim in claims.items() %}
+            <div class="persona {{ persona }}">
+                <h4>{{ persona.capitalize() }}</h4>
+                <p class="claim">{{ claim.text }}</p>
+                <p class="citation">(Source: {{ claim.citation }})</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
