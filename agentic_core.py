@@ -100,7 +100,7 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
             f"Here is the paper text for reference:\n\n{text_chunk}"
         )
         skeptic_response = client.chat.completions.create(
-            model="gpt4o-mini",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": skeptic_prompt}]
         ).choices[0].message.content
         current_round["Skeptic"] = skeptic_response
