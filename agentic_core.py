@@ -117,5 +117,22 @@ def run_debate(initial_claims, paper_text, max_rounds=3):
         ).choices[0].message.content
         current_round["Optimist"] = optimist_response
 
-        
+        # 3. Ethicist responds to the debate between the other two
+        ethicist_prompt = (
+            f"You are the Ethicist. The Optimist and Skeptic are debating. The Optimist's last point was: '{current_round['Optimist']}'. "
+            f"The Skeptic's last pint was: '{current_round['Skeptic']}'. "
+            f"What are the ethical implications of their debate? Add a new ethical claim or concern, citing the paper. "
+            f"Here is the paper text for reference:\n\n{text_chunk}"
+        )
+        ethicist_response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": ethicist_prompt}]
+        ).choices[0].message.content
+
+        current_round["round"] = i
+        debate_history.append(current_round)
+
+    return debate_history
+
+
                                   
