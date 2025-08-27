@@ -75,15 +75,15 @@ The script will download the paper and print a structured, claim-by-claim analys
 ⸻
 
 Project Structure
-
+```
 3-apex/
-├── .env
-├── .gitignore
-├── main.py
-├── pdf_ingestion.py
-├── agentic_core.py 
-└── requirements.txt
-
+├── .env                  # Your API key (local only)
+├── .gitignore            # Specifies files to ignore
+├── main.py               # Main script to run the project
+├── pdf_ingestion.py      # Handles PDF downloading and parsing
+├── agentic_core.py       # Contains the LLM agent logic and debate engin
+└── requirements.txt      # Project dependencies
+```
 
 ⸻
 
