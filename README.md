@@ -2,7 +2,6 @@
 
 This project is an agentic AI system that provides a structured, multi-perspective analysis of academic papers. By taking an arXiv ID as input, the agent ingests a paper, and then three distinct AI personas—the Optimist, Skeptic, and Ethicist—debate its claims. The final output is a cited, claim-by-claim debate summary and a concise TL;DR.
 
-⸻
 
 ## Features
 
