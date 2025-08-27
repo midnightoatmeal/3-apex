@@ -27,7 +27,7 @@ Prerequisites:
 Clone the repository:
 
 git clone https://github.com/midnightoatmeal/arxiv-agent.git
-cd 3-apex
+cd arxiv-agent
 
 Create a virtual environment:
 
@@ -73,7 +73,7 @@ The script will download the paper and print a structured, claim-by-claim analys
 
 ## Project Structure
 ```
-3-apex/
+arxiv-agent/
 ├── .env                  # Your API key (local only)
 ├── .gitignore            # Specifies files to ignore
 ├── main.py               # Main script to run the project
