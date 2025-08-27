@@ -25,9 +25,10 @@ Prerequisites:
 ## Installation
 
 Clone the repository:
-
+```
 git clone https://github.com/midnightoatmeal/arxiv-agent.git
 cd arxiv-agent
+```
 
 Create a virtual environment:
 
