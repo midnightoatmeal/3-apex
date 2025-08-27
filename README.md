@@ -93,5 +93,5 @@ If you have ideas for new personas, better prompts, or improved debate logic, pl
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache-2.0 License.
 See the LICENSE file for details.
