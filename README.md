@@ -41,13 +41,6 @@ Install the required dependencies:
 ```
 pip install -r requirements.txt
 ```
-Note: You will need to create a requirements.txt file with the following contents:
-
-requests
-pdfplumber
-openai
-python-dotenv
-
 ⸻
 
 ## Configuration
@@ -65,14 +58,15 @@ The .env file is already included in .gitignore to keep your API key safe.
 ## Usage
 
 To run the agent and analyze a paper, execute the main script from your terminal:
-
+```
 python3 main.py <arxiv_id>
+```
 
 Example:
 To analyze the seminal “Attention Is All You Need” paper, use the ID 1706.03762.
-
+```
 python3 main.py 1706.03762
-
+```
 The script will download the paper and print a structured, claim-by-claim analysis and debate to your terminal.
 
 ⸻
