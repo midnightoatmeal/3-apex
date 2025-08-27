@@ -26,7 +26,7 @@ Prerequisites:
 
 Clone the repository:
 
-git clone https://github.com/midnightoatmeal/3-apex.git
+git clone https://github.com/midnightoatmeal/arxiv-agent.git
 cd 3-apex
 
 Create a virtual environment:
