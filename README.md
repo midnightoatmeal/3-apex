@@ -22,7 +22,7 @@ Prerequisites:
 	•	Python 3.10 or higher
 	•	An OpenAI API Key
 
-## Installation:
+## Installation
 
 Clone the repository:
 
@@ -31,13 +31,16 @@ cd 3-apex
 
 Create a virtual environment:
 
+```
 python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  
+venv\Scripts\activate #windows
+```
 
 Install the required dependencies:
-
+```
 pip install -r requirements.txt
-
+```
 Note: You will need to create a requirements.txt file with the following contents:
 
 requests
@@ -45,10 +48,9 @@ pdfplumber
 openai
 python-dotenv
 
-
 ⸻
 
-## Configuration:
+## Configuration
 
 Create a .env file in the root directory of your project.
 
@@ -60,7 +62,7 @@ The .env file is already included in .gitignore to keep your API key safe.
 
 ⸻
 
-## Usage:
+## Usage
 
 To run the agent and analyze a paper, execute the main script from your terminal:
 
