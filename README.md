@@ -12,7 +12,7 @@ This project is an agentic AI system that provides a structured, multi-perspecti
 - **Cited Arguments**: All claims are grounded in the original paper’s text to minimize hallucination.  
 - **Concise Summarization**: Generates a final TL;DR that distills the entire debate into a clear, neutral summary.  
 
-⸻
+
 
 ## Getting Started
 
@@ -44,7 +44,7 @@ Install the required dependencies:
 ```
 pip install -r requirements.txt
 ```
-⸻
+
 
 ## Configuration
 
@@ -56,7 +56,7 @@ OPENAI_API_KEY="sk-your-key-here"
 
 The .env file is already included in .gitignore to keep your API key safe.
 
-⸻
+
 
 ## Usage
 
@@ -72,7 +72,6 @@ python3 main.py 1706.03762
 ```
 The script will download the paper and print a structured, claim-by-claim analysis and debate to your terminal.
 
-⸻
 
 ## Project Structure
 ```
@@ -85,14 +84,12 @@ arxiv-agent/
 └── requirements.txt      # Project dependencies
 ```
 
-⸻
 
 ## Contributing
 
 Contributions are welcome!
 If you have ideas for new personas, better prompts, or improved debate logic, please open an issue or submit a pull request.
 
-⸻
 
 ## License
 
