@@ -12,14 +12,11 @@ This project is an agentic AI system that provides a structured, multi-perspecti
 - **Concise Summarization**: Generates a final TL;DR that distills the entire debate into a clear, neutral summary.  
 
 
-
-## Getting Started
+## Installation
 
 Prerequisites:
 	•	Python 3.10 or higher
 	•	An OpenAI API Key
-
-## Installation
 
 Clone the repository:
 ```
