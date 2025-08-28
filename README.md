@@ -15,8 +15,6 @@ This project is an agentic AI system that provides a structured, multi-perspecti
 
 ## Getting Started
 
-Follow these steps to get a local copy of the project up and running.
-
 Prerequisites:
 	•	Python 3.10 or higher
 	•	An OpenAI API Key
