@@ -47,13 +47,18 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Create a .env file in the root directory of your project.
+In the root directory, you will find a template file named `.env.example`.
 
-Add your OpenAI API Key to .env in the following format:
+Make a copy of this file and rename it to `.env`. You can do this with the following command in your terminal:
+```
+cp .env.example .env
+```
+
+Add your OpenAI API Key to `.env` in the following format:
 
 OPENAI_API_KEY="sk-your-key-here"
 
-The .env file is already included in .gitignore to keep your API key safe.
+The `.env` file is already included in `.gitignore` to keep your API key safe.
 
 
 
@@ -75,12 +80,12 @@ The script will download the paper and print a structured, claim-by-claim analys
 ## Project Structure
 ```
 arxiv-agent/
-├── .env                  # Your API key (local only)
-├── .gitignore            # Specifies files to ignore
+├── .env.example          # Template for environment variables
 ├── main.py               # Main script to run the project
 ├── pdf_ingestion.py      # Handles PDF downloading and parsing
-├── agentic_core.py       # Contains the LLM agent logic and debate engin
-└── requirements.txt      # Project dependencies
+├── agentic_core.py       # Contains the LLM agent logic and debate engine
+├── requirements.txt      # Project dependencies
+└── .gitignore            # Specifies files to ignore
 ```
 
 
