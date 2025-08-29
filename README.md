@@ -94,3 +94,9 @@ If you have ideas for new personas, better prompts, or improved debate logic, pl
 
 This project is licensed under the Apache-2.0 License.
 See the LICENSE file for details.
+
+
+## Disclaimer
+
+This project is an independent open-source tool and is **not affiliated with, endorsed by, or sponsored by arXiv.org or Cornell University**.  
+The use of the term *arXiv* in the project name is purely descriptive, referring to the fact that the tool can process papers available on arXiv using their IDs.
